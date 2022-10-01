@@ -1,4 +1,4 @@
-package app
+package laygo
 
 import (
 	"github.com/gin-gonic/gin"

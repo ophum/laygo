@@ -82,7 +82,7 @@ type {{ .ControllerName }} struct {
 	*controllers.BaseController
 }
 
-func New{{- .ControllerName -}}() *{{ .ControllerName }} {
+func New{{ .ControllerName }}() *{{ .ControllerName }} {
 	basePath := ""
 	routes := []controllers.Route{}
 
