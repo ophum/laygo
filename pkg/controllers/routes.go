@@ -17,9 +17,3 @@ type Route struct {
 	Path    string
 	Handler func(ctx *gin.Context) error
 }
-
-func RegisterRoutes(router gin.IRouter, controllers ...Controller) {
-	for _, controller := range controllers {
-		controller.RegisterRoutes(router)
-	}
-}
