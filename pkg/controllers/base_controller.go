@@ -8,16 +8,16 @@ type Controller interface {
 
 type BaseController struct {
 	basePath string
-	routes   []Route
+	router   *Router
 }
 
-func NewBaseController(basePath string, routes []Route) *BaseController {
-	return &BaseController{basePath, routes}
+func NewBaseController(basePath string, router *Router) *BaseController {
+	return &BaseController{basePath, router}
 }
 
 func (c *BaseController) RegisterRoutes(router gin.IRouter) {
 	r := router.Group(c.basePath)
-	for _, route := range c.routes {
+	for _, route := range c.router.routes {
 		switch route.Method {
 		case GET:
 			r.GET(route.Path, handler(route.Handler))
