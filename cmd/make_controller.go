@@ -83,11 +83,10 @@ type {{ .ControllerName }} struct {
 }
 
 func New{{ .ControllerName }}() *{{ .ControllerName }} {
-	basePath := ""
-	routes := []controllers.Route{}
+	router := controllers.NewRouter("")
 
 	return &{{ .ControllerName }}{
-		BaseController: controllers.NewBaseController(basePath, routes),
+		BaseController: controllers.NewBaseController(router),
 	}
 }
 

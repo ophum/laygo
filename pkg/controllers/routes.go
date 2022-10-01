@@ -20,11 +20,15 @@ type Route struct {
 
 type HandlerFunc func(ctx *gin.Context) error
 type Router struct {
-	routes []Route
+	basePath string
+	routes   []Route
 }
 
-func NewRouter() *Router {
-	return &Router{}
+func NewRouter(basePath string) *Router {
+	return &Router{
+		basePath: basePath,
+		routes:   []Route{},
+	}
 }
 
 func (r *Router) append(method RouteMethod, path string, handler HandlerFunc) {

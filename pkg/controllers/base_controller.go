@@ -7,16 +7,15 @@ type Controller interface {
 }
 
 type BaseController struct {
-	basePath string
-	router   *Router
+	router *Router
 }
 
-func NewBaseController(basePath string, router *Router) *BaseController {
-	return &BaseController{basePath, router}
+func NewBaseController(router *Router) *BaseController {
+	return &BaseController{router}
 }
 
 func (c *BaseController) RegisterRoutes(router gin.IRouter) {
-	r := router.Group(c.basePath)
+	r := router.Group(c.router.basePath)
 	for _, route := range c.router.routes {
 		switch route.Method {
 		case GET:
